@@ -17,6 +17,20 @@
               items: []
           };
       },
+
+      componentWillMount: function() {
+          emitter.on(constants.changed, function(todos) {
+              this.setState({ todos: todos });
+          }.bind(this));
+      },
+      
+      componentDidMount: function() {
+          dispatcher.dispatch({ type: constants.all });
+      },
+      
+      componentsWillUnmount: function() {
+          emitter.off(constants.all);
+      },
       // use lifecycle to determine events
   </script>
 </body>
