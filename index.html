@@ -13,25 +13,34 @@
   /** @jsx React.DOM */
   var Count = React.createClass({
       getInitialState: function() {
-          return {
-              items: []
-          };
+        return {
+          items: []
+        };
       },
 
       componentWillMount: function() {
-          emitter.on(constants.changed, function(todos) {
-              this.setState({ todos: todos });
-          }.bind(this));
+        emitter.on(constants.changed, function(todos) {
+          this.setState({ todos: todos });
+        }.bind(this));
       },
       
       componentDidMount: function() {
-          dispatcher.dispatch({ type: constants.all });
+        dispatcher.dispatch({ type: constants.all });
       },
       
       componentsWillUnmount: function() {
-          emitter.off(constants.all);
+        emitter.off(constants.all);
       },
       // use lifecycle to determine events
+
+      create: function() {
+        this.refs.create.show();
+      },
+         
+      renderList: function(complete) {
+        return ;
+      },
+
   </script>
 </body>
 </html>
