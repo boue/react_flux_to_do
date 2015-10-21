@@ -68,6 +68,22 @@
         ;
     } 
   }); 
+
+  var Item = React.createClass({
+    toggle: function() {
+      this.props.todo.isComplete = !this.props.todo.isComplete;
+      dispatcher.dispatch({ type: constants.update, content: this.props.todo });
+    },
+    
+    render: function() {
+      return 
+        {this.props.todo.name}; 
+    } 
+  });
+
+
+
+
   </script>
 </body>
 </html>
